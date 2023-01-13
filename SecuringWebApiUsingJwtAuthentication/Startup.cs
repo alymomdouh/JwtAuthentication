@@ -8,7 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SecuringWebApiUsingJwtAuthentication.IServices;
 using SecuringWebApiUsingJwtAuthentication.Models;
+using SecuringWebApiUsingJwtAuthentication.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +33,7 @@ namespace SecuringWebApiUsingJwtAuthentication
 
             services.AddControllers();
             services.AddDbContext<JwtAuthDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CustomersDbConnectionString")));
-
+            services.AddScoped<ICustomerService, CustomerService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SecuringWebApiUsingJwtAuthentication", Version = "v1" });
