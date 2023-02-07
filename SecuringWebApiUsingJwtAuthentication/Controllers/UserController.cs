@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using SecuringWebApiUsingJwtAuthentication.IServices;
 
 namespace SecuringWebApiUsingJwtAuthentication.Controllers
 {
@@ -7,5 +7,10 @@ namespace SecuringWebApiUsingJwtAuthentication.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
     }
 }
