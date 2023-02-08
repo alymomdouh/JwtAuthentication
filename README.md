@@ -15,3 +15,9 @@ Install-Package Microsoft.EntityFrameworkCore.Tools
 Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design
 Install-Package System.IdentityModel.Tokens.Jwt
 </code>
+
+<a href="https://codewithmukesh.com/blog/aspnet-core-api-with-jwt-authentication/">Build Secure ASP.NET Core API with JWT Authentication – Detailed Guide </a>
+
+<a href="https://codingsonata.com/apply-jwt-access-tokens-and-refresh-tokens-in-asp-net-core-web-api/">
+  Apply JWT Access Tokens and Refresh Tokens in ASP.NET Core Web API
+</a>
