@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SecuringWebApiUsingJwtAuthentication.IServices;
+using SecuringWebApiUsingJwtAuthentication.Models;
+using System.Threading.Tasks;
 
 namespace SecuringWebApiUsingJwtAuthentication.Controllers
 {
@@ -11,6 +13,12 @@ namespace SecuringWebApiUsingJwtAuthentication.Controllers
         public UserController(IUserService userService)
         {
             _userService = userService;
+        }
+        [HttpPost("register")]
+        public async Task<ActionResult> RegisterAsync(RegisterModel model)
+        {
+            var result = await _userService.RegisterAsync(model);
+            return Ok(result);
         }
     }
 }

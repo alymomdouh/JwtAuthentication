@@ -21,6 +21,7 @@ namespace SecuringWebApiUsingJwtAuthentication.Models
 
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<ApplicationUser> ApplicationUser { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,18 +35,22 @@ namespace SecuringWebApiUsingJwtAuthentication.Models
         {
             modelBuilder.Entity<Order>(entity =>
             {
+                entity.HasKey(e => e.Id); 
                 entity.Property(e => e.Currency)
                     .IsUnicode(false)
-                    .IsFixedLength();
-
+                    .IsFixedLength(); 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Order)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Order_Customer");
             });
+            modelBuilder.Entity<ApplicationUser>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+            });
 
-            OnModelCreatingPartial(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         } 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
